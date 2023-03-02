@@ -1,0 +1,102 @@
+{
+    "intents":[
+
+        {
+            "tag": "Greetings",
+            "patterns": ["Hello", " Good afternoon", "Good morning", "Hi", "Hi there", "Good evening", "Hey", "What's up"],
+            "reesponses": ["Hello", " Good afternoon", "Good morning", "Hi", "Hi there", "Good evening", "Hey", "What's up"]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye",
+                "Get lost",
+                "Till next time",
+                "bbye"
+            ],
+            "responses": [
+                "See you!",
+                "Have a nice day",
+                "Bye! Come back again soon."
+            ]
+
+        }, 
+        {
+            "tag": "options",
+            "patterns": [
+                "How you could help me?",
+                "What you can do?",
+                "What help you provide?",
+                "How you can be helpful?",
+                "What support is offered"
+            ],
+            "responses": [
+                "I'm a AI bot, my name is Gustavito, I can help you to plan your day in this beautyful city called Coral Gables. You can ask me things like 'What can I do with my kids?' and I'll suggest you a lot of fun places!"
+            ]
+        }
+        
+        {
+            "tag": "programmer",
+            "patterns": [
+                "Who made you",
+                "who designed you",
+                "who programmed you"
+            ],
+            "responses": [
+                "I was made by a group of teenagers."
+            ]
+        },
+        {
+            "tag": "cheap",
+            "patterns": [
+                "I wanna do something cheap",
+                "I want to do something cheap",
+                "I don't have that much money",
+                "cheap",
+                ""
+            ],
+            "responses": [
+                "I was made by a group of teenagers."
+            ]
+        },
+        {
+            "tag": "Price",
+            "patterns": ["I want to do something cheap", "I don't have a lot of money", "I don not have a lot of money", "I wanna do something cheap", "I don't have money", "I don not have money", "I'm low in cash"],
+            "reesponses": ["Here are some things that you can do for a low price!"]
+        },
+        {
+            "tag": "Outside",
+            "patterns": ["I want to do something outside", "I want to play sports", "I want to be active", "I don't want to be inside", "I want the sun to touch my skin", "I want to touch grass"],
+            "reesponses": ["Here are some outside places that you can go to", "Here the sun will hug you!", "The grass is warm in this places!"]
+        },
+        {
+            "tag": "Inside",
+            "patterns": ["I want to be covered from the sun", "I want to go somewhere with AC", "I want to be inside", "    ", "Hi there", "Good evening", "Hey", "What's up"],
+            "reesponses": ["Hello", " Good afternoon", "Good morning", "Hi", "Hi there", "Good evening", "Hey", "What's up"]
+        },
+        {
+            "tag": "Eductaional",
+            "patterns": ["I want to do something for my kids to learn", "I want to do something to learn", "I want to do something educational", "I want to learn", "I want to learn something interesting", "I want to have a nice time and learn"],
+            "reesponses": ["Sure, here are some places in which you can learn a lot!"]
+        },
+        {
+            "tag": "Kids",
+            "patterns": ["I want to do something with my kids", "I have two kids", "I have one kid", "I want to do something with my children", "What can I do with my children", "What activities can I do witht my children"],
+            "reesponses": ["Hello", " Good afternoon", "Good morning", "Hi", "Hi there", "Good evening", "Hey", "What's up"]
+        },
+        {
+            "tag": "Pets",
+            "patterns": ["I want to do something with my cat", "I want to do something with my dog", "I want to have a walk with my dog", "I want to go to a pet friendly park", "Hi there", "Good evening", "Hey", "What's up"],
+            "reesponses": ["Hello", " Good afternoon", "Good morning", "Hi", "Hi there", "Good evening", "Hey", "What's up"]
+        },
+
+        {
+            "tag": "Events",
+            "patterns": ["What events can I attend? ", "What events are going on right now?", "What's happening today in coral gables?", "Show me the events going on today", "Show me events", "What events are happening today in coral gables?"],
+            "reesponses": ["Here are the events going on today in Coral Gables!"]
+        },
+
+    ]
+}
