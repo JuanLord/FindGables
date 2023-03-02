@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<head>
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+    <link href = "{% static 'style.css' %}" rel = "stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    <title>Itinerary</title>
+
+  <style>
+    button{
+      margin-top: 10px;
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!--The navigation bar -->
+  <nav>
+    <div><img src="{% static 'Logo.png' %}" style="width:100px;"></div>
+    <div class = "nav-links" id = "navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        <ul>
+            <li><a href="index" class = "active">HOME</a>
+            <li><a href = "attractions">ATTRACTIONS</a></li>
+            <li><a href="map">MAP</a></li>
+            <li><a href="itinerary">ITINERARY</a></li>
+            <li><a href="about">ABOUT</a></li>
+        </ul>
+    </div>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+  </nav>
+  <div class="itinerary-container">
+    <div class="top">
+      <h1>My Itinerary</h1>
+    </div>
+    <div class="info">
+      <div>
+        <h2>{{days}} Days</h2>
+        <p>Number of Days</p>
+      </div>
+      <div>
+        <h2>{{total}} Activities</h2>
+        <p>Number of Activities</p>
+      </div>
+    </div>
+
+    <!-- Day 1 -->
+    <ul class="days">
+    {% for location in locations %}
+    {% if forloop.counter0|divisibleby:4 %}
+    <li><span><strong>Day</strong></span><span><strong>Activities</strong></span></li>
+    <li draggable="true" ondragover="dragOver(event)" ondragstart="dragStart(event)"><span contenteditable="true" class="editable">9:00 AM</span><span> {{ location.pk }} </span></li>
+    {% else %}
+    <li draggable="true" ondragover="dragOver(event)" ondragstart="dragStart(event)"><span contenteditable="true" class="editable">9:00 AM</span><span> {{ location.pk }} </span></li>
+    {% endif %}
+
+    {% endfor %}
+    </ul>
+
+    <div class="total-time">
+      Enjoy your time at Coral Gables!
+    </div>
+    <button id="download">Download as PDF</button>
+  </div>
+</body>
+<script>
+    var _el;
+
+  function dragOver(e) {
+    if (isBefore(_el, e.target))
+      e.target.parentNode.insertBefore(_el, e.target);
+    else
+      e.target.parentNode.insertBefore(_el, e.target.nextSibling);
+  }
+
+  function dragStart(e) {
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/plain", null); // Thanks to bqlou for their comment.
+    _el = e.target;
+  }
+
+  function isBefore(el1, el2) {
+    if (el2.parentNode === el1.parentNode)
+      for (var cur = el1.previousSibling; cur && cur.nodeType !== 9; cur = cur.previousSibling)
+        if (cur === el2)
+          return true;
+    return false;
+  }
+  document.addEventListener('dragover', function(e) { e.preventDefault() })
+
+  document.getElementById('download').addEventListener('click', function() {
+    // You can use a library like jsPDF to generate a PDF from the current page
+    var doc = new jsPDF();
+    doc.addHTML(document.body, function() {
+    doc.save('Itinerary.pdf');});
+});
+</script>
+</html>

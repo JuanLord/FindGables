@@ -1,0 +1,187 @@
+{% load static %}
+<html>
+<head>
+    <style>
+        /* Style the chatbox */
+        /* Define some CSS variables */
+        :root {
+        --text-primary: #333333;
+        --text-secondary: #ffffff;
+        --background: #f0f0f0;
+        --shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        /* Style the chatbox */
+        .chatbox {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        border-radius: 10px;
+        background-color: var(--background);
+        box-shadow: var(--shadow);
+        }
+        /* Style the header */
+        .header {
+        padding: 10px;
+        background-color: #4CAF50;
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        }
+        /* Style the header text */
+        .header h3 {
+        color: var(--text-secondary);
+        font-family: Arial, sans-serif; 
+        }
+        /* Style the input field */
+        .input {
+        padding: 10px;
+        border-radius :20px;
+        border: none;
+        width: 80%;
+        outline: none;
+        }
+        /* Style the send button */
+        .send {
+        padding: 10px;
+        border-radius :20px ;
+        border: none;
+        width: 15%;
+        background-color: #4CAF50;
+        color: var(--text-secondary);
+        }
+        /* Style the messages */
+        .messages {
+        height: 300px;
+        overflow-y: scroll;
+        }
+        /* Style user messages */
+        .user {
+        margin-right : auto ;
+        margin-left : 10px ;
+        margin-top : 5px ;
+        margin-bottom :5px ;
+        max-width :80% ;
+        background-color : #4CAF50 ;
+        color : var(--text-secondary) ;
+        padding :10px ;
+        border-radius :20px ; 
+        }
+        /* Style bot messages */
+        .bot {
+        margin-right :10px ; 
+        margin-left:auto ; 
+        margin-top :5px ; 
+        margin-bottom :5px ; 
+        max-width :80% ; 
+        background-color: white ; 
+        color:black ; 
+        padding :10px ; 
+        border-radius :20px ; 
+        }
+        /* Add some animation to the chatbox */
+        .chatbox {
+        transform: scale(0.8);
+        transition: transform 0.3s ease-in-out;
+        }
+        .chatbox:hover {
+        transform: scale(0.9);
+        }
+    </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+</head>
+<body>
+    <div class="chatbox">
+       <div class="header">
+           <h3>Chat with Gably</h3>
+       </div>
+       <div class="messages" id="messages">
+           <!-- Sample messages -->
+           <p class="bot">Hi, this is Chatty. How can I help?</p>
+           <p class="user">Hello Gably</p>
+           <p class="bot">Nice to meet you.</p>
+       </div>
+
+       <!-- Input place to make message -->
+       <form id="form">
+            {% csrf_token %}
+           <input type="text" class="input" id="input" placeholder="Type a message...">
+           <button type="submit" class="send" id="send" name="run_script" >Send</button>
+       </form>
+
+    </div>
+
+    <script>
+
+      var form = document.getElementById("form");
+      var input = document.getElementById("input");
+      var messages = document.getElementById("messages");
+
+      var responses = [
+         "I'm sorry, I don't understand.",
+         "Please ask me something else.",
+         "That's interesting.",
+         "I'm glad you like it.",
+         "Thank you for your feedback."
+      ];
+
+      // Define a function to get a random response from the bot
+      function getResponse() {
+         // Get a random index from 0 to length of responses array
+         var index = Math.floor(Math.random() * responses.length);
+         // Return the response at that index
+         return responses[index];
+      }
+
+      // Define a function to add a message to the messages div
+      function addMessage(sender, text) {
+         // Create a new paragraph element
+         var p = document.createElement("p");
+         // Set its class attribute to sender (user or bot)
+         p.setAttribute("class", sender);
+         // Set its text content to text
+         p.textContent = text;         
+         // Append it to the messages div
+         messages.appendChild(p);
+         // Scroll to the bottom of the messages div
+         messages.scrollTop = messages.scrollHeight;
+      }
+
+      // Add an event listener to the form
+      form.addEventListener("submit", function(event) {
+         // Prevent the default behavior of the form (reloading the page)
+         event.preventDefault();
+         // Get the value of the input field
+         var text = input.value;
+         // If the input is not empty
+         if (text) {
+            $.ajax({
+                type:"GET",
+                url: "{% url 'functions' %}",
+                data: {"var":text},
+                success: function( data ) 
+                {
+                    console.log(data)
+                    addMessage("bot", data["text"]);
+                }
+            }).done(function( o ) {
+            // do something
+                
+            });
+
+
+            // Add a user message with the input text
+            addMessage("user", text);
+            // Clear the input field
+            input.value = "";
+            // Add a bot message with a random response after 1 second
+            setTimeout(function() {
+               //addMessage("bot", getResponse());
+            }, 1000);
+         }
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <link href = "{% static 'style.css' %}" rel = "stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        
+        <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <title>Coral Gables Website</title>
+
+        <style>
+         /* Define some CSS variables */
+        :root {
+            --text-primary: #333333;
+            --text-secondary: #ffffff;
+            --background: #f0f0f0;
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        /* Style the chatbox */
+        .chatbox {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border-radius: 10px;
+            background-color: var(--background);
+            box-shadow: var(--shadow);
+        }
+        /* Style the header */
+        .header-bot {
+            padding: 10px;
+            background-color: #4CAF50;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        /* Style the header text */
+        .header h3 {
+            color: var(--text-secondary);
+            font-family: Arial, sans-serif; 
+        }
+        /* Style the input field */
+        .input {
+            padding: 10px;
+            border-radius :20px;
+            border: none;
+            width: 70%;
+            outline: none;
+        }
+        /* Style the send button */
+        .send {
+            padding: 10px;
+            border-radius :20px ;
+            border: none;
+            width: 15%;
+            background-color: #4CAF50;
+            color: var(--text-secondary);
+        }
+        /* Style the messages */
+        .messages {
+            height: 300px;
+            overflow-y: scroll;
+        }
+        /* Style user messages */
+        .user {
+            margin-right : auto ;
+            margin-left : 10px ;
+            margin-top : 5px ;
+            margin-bottom :5px ;
+            max-width :80% ;
+            background-color : #4CAF50 ;
+            color : var(--text-secondary) ;
+            padding :10px ;
+            border-radius :20px ; 
+        }
+        /* Style bot messages */
+        .bot {
+            margin-right :10px ; 
+            margin-left:auto ; 
+            margin-top :5px ; 
+            margin-bottom :5px ; 
+            max-width :80% ; 
+            background-color: white ; 
+            color:black ; 
+            padding :10px ; 
+            border-radius :20px ; 
+        }
+        /* Add some animation to the chatbox */
+        .chatbox {
+            transform: scale(0.8);
+            transition: transform 0.3s ease-in-out;
+        }
+        .chatbox:hover {
+            transform: scale(0.9);
+        }
+        </style>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    </head>
+    <body>
+        <section class = "header">
+        <!--The navigation bar -->
+        <nav>
+            <div><img src="{% static 'Logo.png' %}" style="width:100px;"></div>
+            <div class = "nav-links" id = "navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index" class = "active">HOME</a>
+                    <li><a href = "attractions">ATTRACTIONS</a></li>
+                    <li><a href="map">MAP</a></li>
+                    <li><a href="itinerary">ITINERARY</a></li>
+                    <li><a href="about">ABOUT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class = "text-box">
+            <h1>Coral Gables:</h1>
+            <p>The city of your dreams!</p>
+        </div>
+        </section>
+
+        <section class="container">
+            <div class="icon-text">
+                <h2>Start your vacation <br> with lots of service</h2>
+            </div>
+            <div class="row-items">
+                <div class="container-box">
+                    <div class="container-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1087/1087927.png">
+                    </div>
+                    <h4>Innovative</h4>
+                    <p>This website offers state of the art technologies that will allow a better navigation through Coral Gables</p>
+                </div>
+                <div class="container-box">
+                    <div class="container-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4185/4185733.png">
+                    </div>
+                    <h4>Clear</h4>
+                    <p>We try to make it as clear as possible to explore the beautiful city of Coral Gables</p>
+                </div>
+                <div class="container-box">
+                    <div class="container-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/328/328198.png">
+                    </div>
+                    <h4>Interactive</h4>
+                    <p>The website is deisgned to be interactive and fun. It also is adapted to be responsive and work for mobile phones</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class = "events">
+            <h1>Featured Events</h1>
+
+            <div class = "row">
+                <div class = "events-col">
+                    <h3>Farmers' Market at Merrick Park</h3>
+                    <img src="http://sfmn.fiu.edu/wp-content/uploads/2020/03/pic-5-e1583338576582.jpg">
+                    <hr>
+                    <p>Open every Saturday from 8 a.m. to 2 p.m. between Jan. 14 and March 25 at Merrick Park, 405 Biltmore Way, the Coral Gables Farmers Market will have local vendors with fresh Florida produce, prepared foods, baked goods, flowers and plants, activities for children, and more!</p>
+                </div>
+
+                <div class = "events-col">
+                    <h3>Carnaval on the Mile</h3>
+                    <img src="https://www.coralgables.com/sites/default/files/styles/internal_banner_mobile/public/2023-02/Web%20capture_21-2-2023_145446_carnavalmiami.com_.jpeg?itok=vj9ifEy5">
+                    <hr>
+                    <p>Join <a href = "https://kiwanislittlehavanafoundation.org/">Kiwanis Club of Little Havana</a> for their annual <a href = "https://carnavalmiami.com/events/carnaval-on-the-mile/">Carnaval on the Mile</a> on Saturday, March 4 and Sunday, March 5 for two days of live music, local art, delicious food and more! Best of all, admission is FREE!</p>
+                </div>
+
+                <div class = "events-col">
+                    <h3>St. Patrick's Street Festival</h3>
+                    <img src="https://www.coralgables.com/sites/default/files/styles/listing_page/public/2022-12/farmers%20market.jpg?itok=cdRKdfcX">
+                    <hr>
+                    <p>Coral Gables' biggest St. Patrick's Day festival returns to Miracle Mile! Friday, March 17, come indulge in some Irish fun and celebrate the 30th annual JohnMartin's St. Patrick's Day Street Festival. Starting at 4 p.m. until midnight on Miracle Mile and Salzedo Street, enjoy live music, entertainment, bar stations, food, games, and more! Sláinte Mhaith! <a href = "https://www.eventbrite.com/e/30th-annual-johnmartins-st-patricks-street-festival-tickets-548091876557?aff=eblast&utm_medium=email&_hsmi=246279586&_hsenc=p2ANqtz-_T3gkKGzE_sw6hqWfP3ZDZvOPyAGs-yOailbMCMaTWdUhOtzGCfxBPMklKu5gG_qTHSqgz3py-gMZfouA_X-MyeEIN8Q&utm_content=246279586&utm_source=hs_email">Tickets are available online.</a></p>
+                </div>
+            </div>
+        </section>
+
+        <div class="chatbox">
+            <div class="header-bot">
+                <h3 style="color:white;">Chat with Gustavito</h3>
+            </div>
+            <div class="messages" id="messages">
+                <!-- Sample messages -->
+                <p class="bot">Hi, this is Chatty. How can I help?</p>
+                <p class="user">Hello Gably</p>
+                <p class="bot">Nice to meet you.</p>
+            </div>
+     
+            <!-- Input place to make message -->
+            <form id="form">
+                 {% csrf_token %}
+                <input type="text" class="input" id="input" placeholder="Type a message...">
+                <button type="submit" class="send" id="send" name="run_script" >Send</button>
+            </form>
+     
+         </div>
+
+
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu() {
+                navLinks.style.right = "0"
+            }
+
+            function hideMenu() {
+                navLinks.style.right = "-200px"
+            }
+
+            var form = document.getElementById("form");
+            var input = document.getElementById("input");
+            var messages = document.getElementById("messages");
+
+
+
+
+
+            // Define a function to add a message to the messages div
+            function addMessage(sender, text) {
+                // Create a new paragraph element
+                var p = document.createElement("p");
+                // Set its class attribute to sender (user or bot)
+                p.setAttribute("class", sender);
+                // Set its text content to text
+                p.textContent = text;         
+                // Append it to the messages div
+                messages.appendChild(p);
+                // Scroll to the bottom of the messages div
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            // Add an event listener to the form
+            form.addEventListener("submit", function(event) {
+                console.log("YESS");
+                // Prevent the default behavior of the form (reloading the page)
+                event.preventDefault();
+                // Get the value of the input field
+                var text = input.value;
+                // If the input is not empty
+                if (text) {
+                $.ajax({
+                    type:"GET",
+                    url: "{% url 'functions' %}",
+                    data: {"var":text},
+                    success: function( data ) 
+                    {
+                            console.log(data)
+                            addMessage("bot", data["text"]);
+                    }
+                }).done(function( o ) {
+                // do something
+                        
+                    });
+
+
+                    // Add a user message with the input text
+                    addMessage("user", text);
+                    // Clear the input field
+                    input.value = "";
+                    // Add a bot message with a random response after 1 second
+                    setTimeout(function() {
+                    //addMessage("bot", getResponse());
+                    }, 1000);
+                }
+                });
+        </script>
+    </body>
+</html>
+<!--
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="logo">
+                <h1>Travel</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Places</a></li>
+                    <li><a href="#">Discounts</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Booking</a></li>
+                </ul>
+            </div>
+            <div class="signup">
+                <a href="#">Sign Up</a>
+            </div>
+        </div>
+        <div class="body">
+            <div class="heading">
+                <h1>Travel With Us</h1>
+                <br>
+                <p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. </p>
+                <br>
+                <br>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="tours">
+                <div class="places">
+                    <h2>Coral Gables</h2>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Coral_Gables_skyline_20100403.jpg" style="width: 300px; height: 250px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 15% OFF</a>
+                </div>
+                <div class="places">
+                    <h2>Coral Gables</h2>
+                    <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,h_625,q_55,w_500/v1/clients/visitflorida/CORAL_GABLES_BILTMORE_HOTEL_b88e84fa-2c78-42e5-99a7-f2f542f25c28.jpg" style="width: 300px; height: 250px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 20% OFF</a>
+                </div>
+                <div class="places">
+                    <h2>Coral Gables</h2>
+                    <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,h_625,q_55,w_500/v1/clients/visitflorida/CORAL_GABLES_VENETIAN_POOL_cf3d4397-3c0d-4f1f-aa0f-a8ca9367951b.jpg" style="width: 300px; height: 250px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 25% OFF</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="#">Copyright</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookies</a>
+            <a href="#">Complaints</a>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="run_script">Run script</button>
+        </form>
+    </body>
+</html>
+ -->

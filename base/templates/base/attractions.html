@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <link href = "{% static 'style.css' %}" rel = "stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <title>Coral Gables Attractions</title>
+    </head>
+    <body>
+        <!--The navigation bar -->
+        <nav>
+            <div><img src="{% static 'Logo.png' %}" style="width:100px;"></div>
+            <div class = "nav-links" id = "navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index" class = "active">HOME</a>
+                    <li><a href = "attractions">ATTRACTIONS</a></li>
+                    <li><a href="map">MAP</a></li>
+                    <li><a href="itinerary">ITINERARY</a></li>
+                    <li><a href="about">ABOUT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+        <section class = "attractions">
+            <div class = "top">
+                <h1>Most Popular Attractions</h1>
+                <p>Some of the most popular attractions!</p>
+            </div>
+            <div class = "row">
+                {% for place in data %}
+                <div class = "attractions-col">
+                    <img src = "{{ place.image }}" alt = "Coral Gables - Miracle Mile">
+                    <h3 id="name">{{place.name}}</h3>
+                    <p>{{ place.description }}</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <a href="{% url 'location' place.name %}">More Info</a>
+                        <input type="hidden" value="{{place.name}}" name="place">
+                        <button type="submit" name="run_script" value="{{ place.name }}" name="addplace">+Add</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+            <!--
+            <div class = "row">
+                <div class = "attractions-col">
+                    <img src = "Images/venetianpool.jpg" alt = "Coral Gables - Venetian Pool">
+                    <h3>Venetian Pool</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in arcu sit amet mi luctus aliquet in ut augue. Nunc ornare tempus tortor, eget tincidunt ante feugiat eget.</p>
+                </div>
+                <div class = "attractions-col">
+                    <img src = "Images/merrickpark.jpg" alt = "Coral Gables - Merrick Park">
+                    <h3>Merrick Park</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in arcu sit amet mi luctus aliquet in ut augue. Nunc ornare tempus tortor, eget tincidunt ante feugiat eget.</p>
+                </div>
+                <div class = "attractions-col">
+                    <img src = "Images/loweartmuseum.jpg" alt = "Coral Gables - Lowe Art Museum">
+                    <h3>Lowe Art Museum</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in arcu sit amet mi luctus aliquet in ut augue. Nunc ornare tempus tortor, eget tincidunt ante feugiat eget.</p>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "attractions-col">
+                    <img src = "Images/giraldaplaza.jpg" alt = "Coral Gables - Giralda Plaza">
+                    <h3>Giralda Plaza</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in arcu sit amet mi luctus aliquet in ut augue. Nunc ornare tempus tortor, eget tincidunt ante feugiat eget.</p>
+                </div>
+                <div class = "attractions-col">
+                    <img src = "Images/artcinema.jpg" alt = "Coral Gables - Art Cinema">
+                    <h3>Art Cinema</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in arcu sit amet mi luctus aliquet in ut augue. Nunc ornare tempus tortor, eget tincidunt ante feugiat eget.</p>
+                </div>
+                <div class = "attractions-col">
+                    <img src = "Images/fairchildgarden.jpg" alt = "Coral Gables - Fairchild Tropical Botanic Garden">
+                    <h3>Fairchild Tropical Botanic Garden</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in arcu sit amet mi luctus aliquet in ut augue. Nunc ornare tempus tortor, eget tincidunt ante feugiat eget.</p>
+                </div>
+            </div>-->
+        </section>
+
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu() {
+                navLinks.style.right = "0"
+            }
+
+            function hideMenu() {
+                navLinks.style.right = "-200px"
+            }
+
+        </script>
+    </body>
+</html>

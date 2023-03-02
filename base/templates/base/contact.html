@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <link href = "{% static 'style.css' %}" rel = "stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+        <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <title>Contact Us</title>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    </head>
+    <body>
+        <!--The navigation bar -->
+        <nav>
+            <div class = "nav-links" id = "navLinks">
+                <!--<i class="fa fa-times" onclick="hideMenu()"></i>-->
+                <ul>
+                    <li><a href="index">HOME</a>
+                    <li><a href = "attractions" class = "active">ATTRACTIONS</a></li>
+                    <li><a href="about">ABOUT</a></li>
+                    <li><a href="contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <!--<i class="fa fa-bars" onclick="showMenu()"></i>-->
+        </nav>
+        <div id="map"></div>
+
+        <section class = "contact">
+            <div class="Parent">
+                <h1>Contact Us!</h1>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.1129920199583!2d-80.2653976855046!3d25.73377671603756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b7edb1e16117%3A0xd0934a5b6eab4e0a!2sCoral%20Gables%20High%20School!5e0!3m2!1sen!2sus!4v1676921731880!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class = "Child">
+                    <input type="submit" class='button' value="Send Mail" onclick="window.location.href='mailto:lucynovo24@email.co'">
+                    <!--<div class = "additional-info">
+                        <p>Coral Gables Senior High</p>
+                        <p><i class="fa-solid fa-location-dot"></i>450 Bird Rd, Coral Gables, FL 33146</p>
+                        <p><i class="fa-solid fa-phone"></i>(305) 443-4871</p>
+                        <p><i class="fa-solid fa-browser"></i><a href = "http://www.coralgablescavaliers.org/">coralgablescavaliers.org</a></p>
+                    </div>-->
+                </div>
+            </div>
+            
+            
+            <!--<div class = "contact">
+                <form action = "https://formsubmit.co/lucynovo24@email.com" method = "POST">
+                    <div class = "input-group">
+                        <input type = "text" id = "name" required>
+                        <label for = "name"><i class = "fas fa-user"></i>Your Name</label>
+                    </div>
+                    <div class = "input-group">
+                        <input type = "text" id = "number" required>
+                        <label for = "number"><i class = "fas fa-phone"></i>Phone No.</label>
+                    </div>
+                    <div class = "input-group">
+                        <input type = "email" id = "email" required>
+                        <label for = "email"><i class = "fas fa-envelope"></i>Email</label>
+                    </div>
+                    <div class = "input-group">
+                        <textarea id = "message" rows = "8" required></textarea>
+                        <label for = "message"><i class = "fas fa-message"></i>Message</label>
+                    </div>
+                    <button type = "submit">Submit <i class = "fas fa-paper-plane"></i></button>
+                </form>
+            </div>-->
+        </section>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"defer></script>
+  
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu() {
+                navLinks.style.right = "0"
+            }
+
+            function hideMenu() {
+                navLinks.style.right = "-200px"
+            }
+
+            function initMap() {
+            // Create a new StyledMapType object, passing it an array of styles,
+            // and the name to be displayed on the map type control.
+            const styledMapType = new google.maps.StyledMapType(
+                [
+                { elementType: "geometry", stylers: [{ color: "#ebe3cd" }] },
+                { elementType: "labels.text.fill", stylers: [{ color: "#523735" }] },
+                { elementType: "labels.text.stroke", stylers: [{ color: "#f5f1e6" }] },
+                {
+                    featureType: "administrative",
+                    elementType: "geometry.stroke",
+                    stylers: [{ color: "#c9b2a6" }],
+                },
+                {
+                    featureType: "administrative.land_parcel",
+                    elementType: "geometry.stroke",
+                    stylers: [{ color: "#dcd2be" }],
+                },
+                {
+                    featureType: "administrative.land_parcel",
+                    elementType: "labels.text.fill",
+                    stylers: [{ color: "#ae9e90" }],
+                },
+                {
+                    featureType: "landscape.natural",
+                    elementType: "geometry",
+                    stylers: [{ color: "#dfd2ae" }],
+                },
+                {
+                    featureType: "poi",
+                    elementType: "geometry",
+                    stylers: [{ color: "#dfd2ae" }],
+                },
+                {
+                    featureType: "poi",
+                    elementType: "labels.text.fill",
+                    stylers: [{ color: "#93817c" }],
+                },
+                {
+                    featureType: "poi.park",
+                    elementType: "geometry.fill",
+                    stylers: [{ color: "#a5b076" }],
+                },
+                {
+                    featureType: "poi.park",
+                    elementType: "labels.text.fill",
+                    stylers: [{ color: "#447530" }],
+                },
+                {
+                    featureType: "road",
+                    elementType: "geometry",
+                    stylers: [{ color: "#f5f1e6" }],
+                },
+                {
+                    featureType: "road.arterial",
+                    elementType: "geometry",
+                    stylers: [{ color: "#fdfcf8" }],
+                },
+                {
+                    featureType: "road.highway",
+                    elementType: "geometry",
+                    stylers: [{ color: "#f8c967" }],
+                },
+                {
+                    featureType: "road.highway",
+                    elementType: "geometry.stroke",
+                    stylers: [{ color: "#e9bc62" }],
+                },
+                {
+                    featureType: "road.highway.controlled_access",
+                    elementType: "geometry",
+                    stylers: [{ color: "#e98d58" }],
+                },
+                {
+                    featureType: "road.highway.controlled_access",
+                    elementType: "geometry.stroke",
+                    stylers: [{ color: "#db8555" }],
+                },
+                {
+                    featureType: "road.local",
+                    elementType: "labels.text.fill",
+                    stylers: [{ color: "#806b63" }],
+                },
+                {
+                    featureType: "transit.line",
+                    elementType: "geometry",
+                    stylers: [{ color: "#dfd2ae" }],
+                },
+                {
+                    featureType: "transit.line",
+                    elementType: "labels.text.fill",
+                    stylers: [{ color: "#8f7d77" }],
+                },
+                {
+                    featureType: "transit.line",
+                    elementType: "labels.text.stroke",
+                    stylers: [{ color: "#ebe3cd" }],
+                },
+                {
+                    featureType: "transit.station",
+                    elementType: "geometry",
+                    stylers: [{ color: "#dfd2ae" }],
+                },
+                {
+                    featureType: "water",
+                    elementType: "geometry.fill",
+                    stylers: [{ color: "#b9d3c2" }],
+                },
+                {
+                    featureType: "water",
+                    elementType: "labels.text.fill",
+                    stylers: [{ color: "#92998d" }],
+                },
+                ],
+                { name: "Styled Map" }
+            );
+            // Create a map object, and include the MapTypeId to add
+            // to the map type control.
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 55.647, lng: 37.581 },
+                zoom: 11,
+                mapTypeControlOptions: {
+                mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
+                },
+            });
+
+            //Associate the styled map with the MapTypeId and set it to display.
+            map.mapTypes.set("styled_map", styledMapType);
+            map.setMapTypeId("styled_map");
+            }
+
+            window.initMap = initMap;
+        </script>
+    </body>
+</html>

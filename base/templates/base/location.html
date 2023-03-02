@@ -1,0 +1,93 @@
+
+<html>
+    <head>
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <style>
+            body{
+                font-family: 'Montserrat';
+            }
+            section{
+                padding: 2rem 9%;
+            }
+            .home {
+                /*display: flex;*/
+                align-items: center;
+                text-align: center;
+                min-height: 50vh;
+                /*background-color: salmon;*/
+                background: url("{{ image }}");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                /*background-position: center;*/
+            }
+            .home .content h1{
+                font-size: 80px;
+                color: white;
+                text-shadow: rgba(0, 0, 0, 0.20) 2.95px 2.95px 3.6px;
+            }
+
+            .heading{
+                text-align: left;
+                font-size: 4rem;
+                color: #333;
+                padding: 1rem;
+                margin: 2rem 0;
+                background: rgba(255, 51, 153, .005);
+            }
+            .heading span{
+                color: rgb(75, 101, 116);
+            }
+
+            .row {
+                margin-top: 5%;
+                display: flex;
+            }
+
+            .content .info-col, .info-col2 {
+                flex: 50%;
+            }
+
+            .content .info-col {
+                padding: 1rem;
+            }
+
+            .info-col2 {
+                padding-left: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="home" id="home">
+            <div class="content">
+                <h1>{{ name }}<h1>
+            </div>
+        </section>
+        <div class = "info">
+            <div class = "content">
+                <h1 class="heading"><span>Information</span></h1>
+                <div class="row">
+                <div class="info-col">
+                    <h3>Description</h3>
+                    <p>{{ description }}</p>
+                </div>
+                <div class = "info-col2">
+                    <h3>Opening Hours</h3>
+                    <p>{{ open }}</p>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "info-col">
+                    <h3>Cost</h3>
+                    <p>{{ cost }}</p>
+                </div>
+                <div class = "info-col2">
+                    <h3>Address</h3>
+                    <p>{{ address }}</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>

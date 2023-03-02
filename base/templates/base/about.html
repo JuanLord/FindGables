@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <link href = "{% static 'style.css' %}" rel = "stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <title>Coral Gables Attractions</title>
+    </head>
+    <body>
+    <!--The navigation bar -->
+    <nav>
+        <div><img src="{% static 'Logo.png' %}" style="width:100px;"></div>
+        <div class = "nav-links" id = "navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="index" class = "active">HOME</a>
+                <li><a href = "attractions">ATTRACTIONS</a></li>
+                <li><a href="map">MAP</a></li>
+                <li><a href="itinerary">ITINERARY</a></li>
+                <li><a href="about">ABOUT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+        <section class = "about">
+            <h1>About Us</h1>
+            <p>This project was made by 3 people. We have worked very hard to make this webpage to your liking!</p>
+
+            <div class = "row">
+                <div class = "person">
+                    <img src = "{% static 'faces/Juan.png' %}" alt = "creator1">
+                    <h3>Juan Varela</h3>
+                    <p>Hello there! I'm Juan Varela, I'm 16 years old and I really enjoy programming and problem solving. Ever since I was little, I loved making games and exploring the possibilities of technology. I started with simple videogames and gradually learned how to create more complex and interactive experiences. I enjoy learning new skills and challenging myself with different projects, I have experience creating websites and AI, and I am currently learning app development. I'm always curious about how things work and how to make them better. Apart from programming, I also have other hobbies and interests. I love watching movies, especially sci-fi and action genres. Some of my favorite movies are 2001: A Space Odyssey, ex-machina and interstellar. I also like listening to rock music and going to concerts. Some of the bands that I listen to are Nirvana, Pink Floyd and Led Zeppelin. </p>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "person">
+                    <img src = "{% static 'faces/Lucia.png' %}" alt = "creator2">
+                    <h3>Lucia Novo</h3>
+                    <p>Hi! I am a 10th grade student at Coral Gables Senior High with high imagination and ambition, as well as a bit of competitiveness, always wanting to be the best at anything I do. Something I'm very fond of is videogames. Since I was little, I have always been exposed to video games of many genres from the start, and this led to a desire for making my very own game, which first started as some little drawings, but then also led to an interest for programming and computers in general. I am currently studying Java and Python, in which I enjoy Java much more and hope to learn how to use it well someday. As for now, I always try hard to learn new things and I hope to work in the field game development when I grow up. As for some other things I enjoy, I like singing and drawing.</p>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "person">
+                    <img src = "{% static 'faces/Felipe.png' %}" alt = "creator3">
+                    <h3>Felipe Escobar</h3>
+                    <p>Hello, my name is Felipe and I'm a creative soul with a deep passion for both art and technology. When I'm not listening to my favorite Argentinean band, Soda Stereo, you can usually find me designing something new, tinkering with HTML and CSS, or exploring new ways to express myself through my art.I'm constantly pushing myself to learn and grow, whether it's by attending design conferences, exploring new art forms, or experimenting with new coding techniques. I believe that creativity is essential to both art and technology, and I strive to bring that passion and creativity to everything I do.</p>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu() {
+                navLinks.style.right = "0"
+            }
+
+            function hideMenu() {
+                navLinks.style.right = "-200px"
+            }
+        </script>
+    </body>
+</html>
